@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:ns0="https://w3id.org/biolink/vocab/"
+         xmlns:ns1="https://um.es/diabetes/">
+
+  <rdf:Description rdf:about="https://um.es/diabetes/Type2Diabetes">
+    <rdf:type rdf:resource="https://w3id.org/biolink/vocab/Disease"/>
+    <rdfs:label>Type 2 Diabetes Mellitus</rdfs:label>
+    <ns0:has_phenotype>
+      <ns0:PhenotypicFeature rdf:about="https://um.es/diabetes/Hyperglycemia">
+        <rdfs:label>Hyperglycemia</rdfs:label>
+      </ns0:PhenotypicFeature>
+    </ns0:has_phenotype>
+
+    <ns0:has_phenotype>
+      <ns0:PhenotypicFeature rdf:about="https://um.es/diabetes/InsulinResistance">
+        <rdfs:label>Insulin resistance</rdfs:label>
+      </ns0:PhenotypicFeature>
+    </ns0:has_phenotype>
+
+    <ns0:has_phenotype>
+      <ns0:PhenotypicFeature rdf:about="https://um.es/diabetes/BetaCellDysfunction">
+        <rdfs:label>Beta cell dysfunction</rdfs:label>
+      </ns0:PhenotypicFeature>
+    </ns0:has_phenotype>
+
+    <ns1:causadaPor>
+      <rdf:Description rdf:about="https://um.es/diabetes/Mut_INS_p_Arg65His">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0001583"/>
+        <rdfs:label>INS p.Arg65His</rdfs:label>
+        <rdfs:comment>Mutación missense en INS asociada a diabetes tipo 2</rdfs:comment>
+        <ns1:afectaGen rdf:resource="https://um.es/diabetes/INS"/>
+        <ns1:reduce_expresion rdf:resource="http://purl.uniprot.org/uniprot/P01308"/>
+        <ns1:tratadaCon>
+          <ns0:Drug rdf:about="https://um.es/diabetes/Metformin">
+            <rdfs:label>Metformin</rdfs:label>
+            <rdfs:comment>Mejora la sensibilidad a la insulina</rdfs:comment>
+          </ns0:Drug>
+        </ns1:tratadaCon>
+
+      </rdf:Description>
+    </ns1:causadaPor>
+
+    <ns1:causadaPor>
+      <rdf:Description rdf:about="https://um.es/diabetes/Mut_INS_p_Gly24Asp">
+        <rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0001583"/>
+        <rdfs:label>INS p.Gly24Asp</rdfs:label>
+        <rdfs:comment>Mutación missense que reduce la producción de insulina</rdfs:comment>
+        <ns1:afectaGen rdf:resource="https://um.es/diabetes/INS"/>
+        <ns1:reduce_expresion rdf:resource="http://purl.uniprot.org/uniprot/P01308"/>
+        <ns1:tratadaCon>
+          <ns0:Drug rdf:about="https://um.es/diabetes/Sulfonylurea">
+            <rdfs:label>Sulfonylurea</rdfs:label>
+            <rdfs:comment>Estimula la secreción de insulina</rdfs:comment>
+          </ns0:Drug>
+        </ns1:tratadaCon>
+
+      </rdf:Description>
+    </ns1:causadaPor>
+
+  </rdf:Description>
+
+  <ns0:BiologicalProcess rdf:about="https://um.es/diabetes/GlucoseMetabolism">
+    <rdfs:label>Glucose metabolism</rdfs:label>
+    <ns0:related_to rdf:resource="https://um.es/diabetes/Type2Diabetes"/>
+  </ns0:BiologicalProcess>
+
+  <ns0:BiologicalProcess rdf:about="https://um.es/diabetes/InsulinSignaling">
+    <rdfs:label>Insulin signaling pathway</rdfs:label>
+    <ns0:related_to rdf:resource="https://um.es/diabetes/Type2Diabetes"/>
+  </ns0:BiologicalProcess>
+
+  <ns0:CellularComponent rdf:about="https://um.es/diabetes/PancreaticBetaCell">
+    <rdfs:label>Pancreatic beta cell</rdfs:label>
+  </ns0:CellularComponent>
+
+  <ns0:AnatomicalEntity rdf:about="https://um.es/diabetes/AdiposeTissue">
+    <rdfs:label>Adipose tissue</rdfs:label>
+  </ns0:AnatomicalEntity>
+
+  <ns0:Organism rdf:about="http://purl.obolibrary.org/obo/NCBITaxon_9606">
+    <rdfs:label>Homo sapiens</rdfs:label>
+  </ns0:Organism>
+
+  <ns0:Gene rdf:about="https://um.es/diabetes/INS">
+    <rdfs:label>INS gene</rdfs:label>
+    <ns0:in_taxon rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+    <ns0:expressed_in rdf:resource="https://um.es/diabetes/PancreaticBetaCell"/>
+  </ns0:Gene>
+
+  <ns0:Gene rdf:about="https://um.es/diabetes/INSR">
+    <rdfs:label>INSR gene</rdfs:label>
+    <ns0:in_taxon rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+  </ns0:Gene>
+
+  <ns0:Gene rdf:about="https://um.es/diabetes/SLC2A4">
+    <rdfs:label>SLC2A4 gene</rdfs:label>
+    <ns0:in_taxon rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+    <ns0:expressed_in rdf:resource="https://um.es/diabetes/AdiposeTissue"/>
+  </ns0:Gene>
+
+  <ns0:Gene rdf:about="https://um.es/diabetes/AKT1">
+    <rdfs:label>AKT1 gene</rdfs:label>
+    <ns0:in_taxon rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+    <ns0:expressed_in rdf:resource="https://um.es/diabetes/AdiposeTissue"/>
+  </ns0:Gene>
+
+  <ns0:Protein rdf:about="http://purl.uniprot.org/uniprot/P01308">
+    <rdfs:label>Insulin</rdfs:label>
+    <ns0:encoded_by rdf:resource="https://um.es/diabetes/INS"/>
+    <ns0:associated_with rdf:resource="https://um.es/diabetes/Type2Diabetes"/>
+    <ns0:participates_in rdf:resource="https://um.es/diabetes/GlucoseMetabolism"/>
+    <ns0:participates_in rdf:resource="https://um.es/diabetes/InsulinSignaling"/>
+    <ns0:located_in rdf:resource="https://um.es/diabetes/PancreaticBetaCell"/>
+    <ns0:in_taxon rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+  </ns0:Protein>
+
+  <ns0:Protein rdf:about="http://purl.uniprot.org/uniprot/P06213">
+    <rdfs:label>Insulin receptor</rdfs:label>
+    <ns0:encoded_by rdf:resource="https://um.es/diabetes/INSR"/>
+    <ns0:associated_with rdf:resource="https://um.es/diabetes/Type2Diabetes"/>
+    <ns0:participates_in rdf:resource="https://um.es/diabetes/InsulinSignaling"/>
+    <ns0:located_in rdf:resource="https://um.es/diabetes/PancreaticBetaCell"/>
+    <ns0:in_taxon rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+  </ns0:Protein>
+
+  <ns0:Protein rdf:about="http://purl.uniprot.org/uniprot/P14672">
+    <rdfs:label>GLUT4 glucose transporter</rdfs:label>
+    <ns0:encoded_by rdf:resource="https://um.es/diabetes/SLC2A4"/>
+    <ns0:associated_with rdf:resource="https://um.es/diabetes/Type2Diabetes"/>
+    <ns0:participates_in rdf:resource="https://um.es/diabetes/GlucoseMetabolism"/>
+    <ns0:participates_in rdf:resource="https://um.es/diabetes/InsulinSignaling"/>
+    <ns0:located_in rdf:resource="https://um.es/diabetes/PancreaticBetaCell"/>
+    <ns0:located_in rdf:resource="https://um.es/diabetes/AdiposeTissue"/>
+    <ns0:in_taxon rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+  </ns0:Protein>
+
+  <ns0:Protein rdf:about="http://purl.uniprot.org/uniprot/P31749">
+    <rdfs:label>AKT serine/threonine kinase 1</rdfs:label>
+    <ns0:encoded_by rdf:resource="https://um.es/diabetes/AKT1"/>
+    <ns0:associated_with rdf:resource="https://um.es/diabetes/Type2Diabetes"/>
+    <ns0:participates_in rdf:resource="https://um.es/diabetes/InsulinSignaling"/>
+    <ns0:participates_in rdf:resource="https://um.es/diabetes/GlucoseMetabolism"/>
+    <ns0:located_in rdf:resource="https://um.es/diabetes/PancreaticBetaCell"/>
+    <ns0:in_taxon rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+  </ns0:Protein>
+
+</rdf:RDF>
