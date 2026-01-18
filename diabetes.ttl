@@ -1,0 +1,121 @@
+@prefix ex: <https://um.es/diabetes/> .
+@prefix biolink: <https://w3id.org/biolink/vocab/> .
+@prefix up: <http://purl.uniprot.org/uniprot/> .
+@prefix taxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix so: <http://purl.obolibrary.org/obo/SO_> .
+@prefix drugbank: <https://www.drugbank.ca/drugs/> .
+
+# Enfermedad
+ex:Type2Diabetes rdf:type biolink:Disease ;
+    rdfs:label "Type 2 Diabetes Mellitus" ;
+    biolink:has_phenotype ex:Hyperglycemia, ex:InsulinResistance, ex:BetaCellDysfunction ;
+    ex:causadaPor ex:Mut_INS_p_Arg65His, ex:Mut_INS_p_Gly24Asp .
+
+# Fenotipos
+ex:Hyperglycemia rdf:type biolink:PhenotypicFeature ;
+    rdfs:label "Hyperglycemia" .
+
+ex:InsulinResistance rdf:type biolink:PhenotypicFeature ;
+    rdfs:label "Insulin resistance" .
+
+ex:BetaCellDysfunction rdf:type biolink:PhenotypicFeature ;
+    rdfs:label "Beta cell dysfunction" .
+
+# Procesos biológicos
+ex:GlucoseMetabolism rdf:type biolink:BiologicalProcess ;
+    rdfs:label "Glucose metabolism" ;
+    biolink:related_to ex:Type2Diabetes .
+
+ex:InsulinSignaling rdf:type biolink:BiologicalProcess ;
+    rdfs:label "Insulin signaling pathway" ;
+    biolink:related_to ex:Type2Diabetes .
+
+# Componentes celulares y tejidos
+ex:PancreaticBetaCell rdf:type biolink:CellularComponent ;
+    rdfs:label "Pancreatic beta cell" .
+
+ex:AdiposeTissue rdf:type biolink:AnatomicalEntity ;
+    rdfs:label "Adipose tissue" .
+
+# Organismo
+taxon:9606 rdf:type biolink:Organism ;
+    rdfs:label "Homo sapiens" .
+
+# Genes
+ex:INS rdf:type biolink:Gene ;
+    rdfs:label "INS gene" ;
+    biolink:in_taxon taxon:9606 ;
+    biolink:expressed_in ex:PancreaticBetaCell .
+
+ex:INSR rdf:type biolink:Gene ;
+    rdfs:label "INSR gene" ;
+    biolink:in_taxon taxon:9606 .
+
+ex:SLC2A4 rdf:type biolink:Gene ;
+    rdfs:label "SLC2A4 gene" ;
+    biolink:in_taxon taxon:9606 ;
+    biolink:expressed_in ex:AdiposeTissue .
+
+ex:AKT1 rdf:type biolink:Gene ;
+    rdfs:label "AKT1 gene" ;
+    biolink:in_taxon taxon:9606 ;
+    biolink:expressed_in ex:AdiposeTissue .
+
+# Proteínas
+up:P01308 rdf:type biolink:Protein ;
+    rdfs:label "Insulin" ;
+    biolink:encoded_by ex:INS ;
+    biolink:associated_with ex:Type2Diabetes ;
+    biolink:participates_in ex:GlucoseMetabolism , ex:InsulinSignaling ;
+    biolink:located_in ex:PancreaticBetaCell ;
+    biolink:in_taxon taxon:9606 .
+
+up:P06213 rdf:type biolink:Protein ;
+    rdfs:label "Insulin receptor" ;
+    biolink:encoded_by ex:INSR ;
+    biolink:associated_with ex:Type2Diabetes ;
+    biolink:participates_in ex:InsulinSignaling ;
+    biolink:located_in ex:PancreaticBetaCell ;
+    biolink:in_taxon taxon:9606 .
+
+up:P14672 rdf:type biolink:Protein ;
+    rdfs:label "GLUT4 glucose transporter" ;
+    biolink:encoded_by ex:SLC2A4 ;
+    biolink:associated_with ex:Type2Diabetes ;
+    biolink:participates_in ex:GlucoseMetabolism , ex:InsulinSignaling ;
+    biolink:located_in ex:PancreaticBetaCell , ex:AdiposeTissue ;
+    biolink:in_taxon taxon:9606 .
+
+up:P31749 rdf:type biolink:Protein ;
+    rdfs:label "AKT serine/threonine kinase 1" ;
+    biolink:encoded_by ex:AKT1 ;
+    biolink:associated_with ex:Type2Diabetes ;
+    biolink:participates_in ex:InsulinSignaling , ex:GlucoseMetabolism ;
+    biolink:located_in ex:PancreaticBetaCell ;
+    biolink:in_taxon taxon:9606 .
+
+# Mutaciones
+ex:Mut_INS_p_Arg65His rdf:type so:0001583 ;
+    rdfs:label "INS p.Arg65His" ;
+    rdfs:comment "Mutación missense en INS asociada a diabetes tipo 2" ;
+    ex:afectaGen ex:INS ;
+    ex:reduce_expresion up:P01308 ;
+    ex:tratadaCon ex:Metformin .
+
+ex:Mut_INS_p_Gly24Asp rdf:type so:0001583 ;
+    rdfs:label "INS p.Gly24Asp" ;
+    rdfs:comment "Mutación missense que reduce la producción de insulina" ;
+    ex:afectaGen ex:INS ;
+    ex:reduce_expresion up:P01308 ;
+    ex:tratadaCon ex:Sulfonylurea .
+
+# Fármacos
+ex:Metformin rdf:type biolink:Drug ;
+    rdfs:label "Metformin" ;
+    rdfs:comment "Mejora la sensibilidad a la insulina" .
+
+ex:Sulfonylurea rdf:type biolink:Drug ;
+    rdfs:label "Sulfonylurea" ;
+    rdfs:comment "Estimula la secreción de insulina" .
